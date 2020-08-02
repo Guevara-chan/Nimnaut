@@ -4,7 +4,7 @@
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 import nautilus, lenientops
 
-let window = nautilusWindow(640, 640, "Nimnaut/[the Well]".newWideCString)
+let window = nautilusWindow(640, 640, "Nimnaut/[the Well]")
 if window.hwnd != 0:
     window.timerCreate()
     let engine = nautilusEngine(window.hwnd, window.width, window.height)
@@ -31,7 +31,7 @@ if window.hwnd != 0:
                     engine.renderRotate(angle-i.float32)                
                 scale = scale div 2
             engine.renderReset()
-            engine.drawTextMod window.width-160.0,window.height-20.0,"by V.A. Guevara".newWideCString,10,10,Tint=0x20a5da
+            engine.drawTextMod window.width-160.0, window.height-20.0, "by V.A. Guevara", 10, 10, Tint=0x20a5da
             engine.renderEnd()
             window.timerWait()
     engine.release

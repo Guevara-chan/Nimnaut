@@ -413,6 +413,7 @@ proc release*(self: ptr NAUTILUS_ENGINE): int {.inline discardable.} = self.Rele
 #  FirstLine = 20
 #  EnableXP
 converter bool2int*(self: bool): int = self.int
+converter str2widestr*(self: string): WideCString = self.newWideCString
 proc nautilusWindow*(Width: int, Height: int, Title = "".newWideCString, Type = 0, TopMost = false): ptr NAUTILUS_WINDOW  {.NAUT, importc: "nautilusWindow".}
 proc nautilusEngine*(Hwnd: int, Width: int, Height: int): ptr NAUTILUS_ENGINE {.NAUT, importc: "nautilusEngine".}
 proc nautilusVersion*(): int {.NAUT, importc: "nautilusVersion".}
