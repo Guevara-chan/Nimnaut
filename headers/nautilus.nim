@@ -10,7 +10,7 @@
 # ------------------------------------------------------------------------------------
 
 
-const NAUTILUS_VERSION = 0x1070
+const NAUTILUS_VERSION* = 0x1070
 type constants = enum
     NAUTILUS_WINDOW_NORMAL
     NAUTILUS_WINDOW_SIZEABLE
