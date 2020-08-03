@@ -4,3 +4,10 @@
 
 **Nimnaut** is a project to make `Nautilus` useable in [Nim](https://nim-lang.org/) and provide basic set of usage examples.  
 Just `import nautilus` to hook it up - maximum transparency, Nim style.
+
+## •Featuræ•
+* No manual or documentation.
+* No userbase or usage cases.
+* No engine sources.
+* No future.
+* No life.
