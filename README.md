@@ -14,6 +14,7 @@ Just `import nautilus` to hook it up - maximum transparency, Nim style.
 
 ## •Compatibility•
 **Nautilus** engine supports only Windows operation systems (both x86 and x64) at given moment.
+**Nimnaut** was developed to use with Nim 0.18.0 and no external dependencies.
 
 ## •Brief samples of pure obscurity•
 ![image](https://user-images.githubusercontent.com/8768470/89148586-f4df2f00-d562-11ea-836d-6cd81196975e.png)
