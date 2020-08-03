@@ -6,7 +6,7 @@
 Just `import nautilus` to hook it up - maximum transparency, Nim style.
 
 ## •Featuræ•
-* No manual or documentation.
+* No guides or documentation.
 * No userbase or usage cases.
 * No engine sources.
 * No future.
