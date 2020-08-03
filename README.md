@@ -13,4 +13,4 @@ Just `import nautilus` to hook it up - maximum transparency, Nim style.
 * No life.
 
 ## :.Brief samples of pure obscurity.:
-![image](https://user-images.githubusercontent.com/8768470/89148525-c7928100-d562-11ea-984a-6e5069bbe86a.png)
+![image](https://user-images.githubusercontent.com/8768470/89148586-f4df2f00-d562-11ea-836d-6cd81196975e.png)
