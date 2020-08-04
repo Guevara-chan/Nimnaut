@@ -134,11 +134,11 @@ type NAUTILUS_FONT* = ref object
     # *- Get the font spacing (distcance between chrs) - point *Spacing to a float | returns nothing
     Spacing*: proc(self: ptr NAUTILUS_FONT, Spacing: ptr[float32]): int {.cdecl.}
     # *- Set the font spacing (distcance between chrs) | returns nothing
-    SpacingChange*: proc(self: ptr NAUTILUS_FONT, Spacing = 0): int {.cdecl.}
+    SpacingChange*: proc(self: ptr NAUTILUS_FONT, Spacing = 0.0): int {.cdecl.}
     # *- Release the font | returns nothing
     Release*: proc(self: ptr NAUTILUS_FONT) {.cdecl.}
 proc spacing*(self: ptr NAUTILUS_FONT, Spacing: ptr[float32]): int {.inline discardable.} = self.Spacing(self, Spacing)
-proc spacingChange*(self: ptr NAUTILUS_FONT, Spacing = 0): int {.inline discardable.} = self.SpacingChange(self, Spacing)
+proc spacingChange*(self: ptr NAUTILUS_FONT, Spacing = 0.0): int {.inline discardable.} = self.SpacingChange(self, Spacing)
 proc release*(self: ptr NAUTILUS_FONT) {.inline discardable.} = self.Release(self)
 type NAUTILUS_ANIMATION* = ref object
     # *- Activates the animation (ANIMATIONS ARE PROCESSED WITH A CALL TO NAUTILUS_ENGINE\RenderUpdate()) | returns nothing
@@ -177,52 +177,52 @@ type NAUTILUS_TILE* = ref object
     SizeSet*: proc(self: ptr NAUTILUS_TILE, Width: float32, Height: float32): int {.cdecl.}
     # *- Resets the original size | returns nothing
     SizeReset*: proc(self: ptr NAUTILUS_TILE) {.cdecl.}
-    Draw*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    DrawMod*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    Draw*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    DrawMod*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     DrawMap*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.cdecl.}
-    Blend*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    BlendMod*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    Blend*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    BlendMod*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     BlendMap*: proc(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.cdecl.}
-    DrawText*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    DrawTextMod*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    BlendText*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    BlendTextMod*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerDraw*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    DrawText*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    DrawTextMod*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    BlendText*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    BlendTextMod*: proc(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerDraw*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     # *- LAYER FUNCTIONS WILL DISPATCH THE RENDER COMMANDS TO A LAYER (there are 10 layers 0 - 9 which can be used in succession) - (LAYERS ARE PROCESSED WITH A CALL TO NAUTILUS_ENGINE\RenderLayer()) 
     LayerDrawMod*: proc(self: ptr NAUTILUS_TILE): int {.cdecl.}
     LayerDrawMap*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.cdecl.}
-    LayerBlend*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerBlendMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    LayerBlend*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerBlendMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     LayerBlendMap*: proc(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.cdecl.}
-    LayerDrawText*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerDrawTextMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerBlendText*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerBlendTextMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    LayerDrawText*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerDrawTextMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerBlendText*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerBlendTextMod*: proc(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     Release*: proc(self: ptr NAUTILUS_TILE): int {.cdecl.}
 proc count*(self: ptr NAUTILUS_TILE): int {.inline discardable.} = self.Count(self)
 proc sizeGet*(self: ptr NAUTILUS_TILE, Width: pointer, Height: pointer): int {.inline discardable.} = self.SizeGet(self, Width, Height)
 proc sizeSet*(self: ptr NAUTILUS_TILE, Width: float32, Height: float32): int {.inline discardable.} = self.SizeSet(self, Width, Height)
 proc sizeReset*(self: ptr NAUTILUS_TILE) {.inline discardable.} = self.SizeReset(self)
-proc draw*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.Draw(self, Index, Animation, X, Y, Center, Alpha, Tint, Angle)
-proc drawMod*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawMod(self, Index, Animation, X, Y, Width, Height, Center, Alpha, Tint, Angle)
+proc draw*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.Draw(self, Index, Animation, X, Y, Center, Alpha, Tint, Angle)
+proc drawMod*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawMod(self, Index, Animation, X, Y, Width, Height, Center, Alpha, Tint, Angle)
 proc drawMap*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.inline discardable.} = self.DrawMap(self, Index, Animation, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Alpha, Tint)
-proc blend*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.Blend(self, Index, Animation, X, Y, Center, Tint, Angle)
-proc blendMod*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.BlendMod(self, Index, Animation, X, Y, Width, Height, Center, Tint, Angle)
+proc blend*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.Blend(self, Index, Animation, X, Y, Center, Tint, Angle)
+proc blendMod*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.BlendMod(self, Index, Animation, X, Y, Width, Height, Center, Tint, Angle)
 proc blendMap*(self: ptr NAUTILUS_TILE, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.inline discardable.} = self.BlendMap(self, Index, Animation, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Tint)
-proc drawText*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawText(self, Font, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
-proc drawTextMod*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawTextMod(self, Font, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
-proc blendText*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.BlendText(self, Font, X, Y, Text, CenterX, CenterY, Tint, Angle)
-proc blendTextMod*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.BlendTextMod(self, Font, X, Y, Text, Width, Height, CenterX, CenterY, Tint, Angle)
-proc layerDraw*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerDraw(self, Layer, Index, Animation, X, Y, Center, Alpha, Tint, Angle)
+proc drawText*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawText(self, Font, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
+proc drawTextMod*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawTextMod(self, Font, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
+proc blendText*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.BlendText(self, Font, X, Y, Text, CenterX, CenterY, Tint, Angle)
+proc blendTextMod*(self: ptr NAUTILUS_TILE, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.BlendTextMod(self, Font, X, Y, Text, Width, Height, CenterX, CenterY, Tint, Angle)
+proc layerDraw*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerDraw(self, Layer, Index, Animation, X, Y, Center, Alpha, Tint, Angle)
 proc layerDrawMod*(self: ptr NAUTILUS_TILE): int {.inline discardable.} = self.LayerDrawMod(self)
 proc layerDrawMap*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.inline discardable.} = self.LayerDrawMap(self, Layer, Index, Animation, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Alpha, Tint)
-proc layerBlend*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlend(self, Layer, Index, Animation, X, Y, Center, Tint, Angle)
-proc layerBlendMod*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlendMod(self, Layer, Index, Animation, X, Y, Width, Height, Center, Tint, Angle)
+proc layerBlend*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlend(self, Layer, Index, Animation, X, Y, Center, Tint, Angle)
+proc layerBlendMod*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlendMod(self, Layer, Index, Animation, X, Y, Width, Height, Center, Tint, Angle)
 proc layerBlendMap*(self: ptr NAUTILUS_TILE, Layer: int, Index: int, Animation: pointer, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.inline discardable.} = self.LayerBlendMap(self, Layer, Index, Animation, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Tint)
-proc layerDrawText*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerDrawText(self, Layer, Font, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
-proc layerDrawTextMod*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerDrawTextMod(self, Layer, Font, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
-proc layerBlendText*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlendText(self, Layer, Font, X, Y, Text, CenterX, CenterY, Tint, Angle)
-proc layerBlendTextMod*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0, Height = 0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlendTextMod(self, Layer, Font, X, Y, Text, Width, Height, CenterX, CenterY, Tint, Angle)
+proc layerDrawText*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerDrawText(self, Layer, Font, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
+proc layerDrawTextMod*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerDrawTextMod(self, Layer, Font, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
+proc layerBlendText*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlendText(self, Layer, Font, X, Y, Text, CenterX, CenterY, Tint, Angle)
+proc layerBlendTextMod*(self: ptr NAUTILUS_TILE, Layer: int, Font: pointer, X: float32, Y: float32, Text: WideCString, Width = 0.0, Height = 0.0, CenterX = false.int, CenterY = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlendTextMod(self, Layer, Font, X, Y, Text, Width, Height, CenterX, CenterY, Tint, Angle)
 proc release*(self: ptr NAUTILUS_TILE): int {.inline discardable.} = self.Release(self)
 type NAUTILUS_TEXTURE* = ref object
     # *- Get tile size - point *Width and *Height to floats | returns nothing
@@ -230,17 +230,17 @@ type NAUTILUS_TEXTURE* = ref object
     # *- Get tile size - point *Width and *Height to floats | returns nothing
     SizeSet*: proc(self: ptr NAUTILUS_TEXTURE, Width: float32, Height: float32): int {.cdecl.}
     SizeReset*: proc(self: ptr NAUTILUS_TEXTURE): int {.cdecl.}
-    Draw*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    DrawMod*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    Draw*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    DrawMod*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     DrawMap*: proc(self: ptr NAUTILUS_TEXTURE, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.cdecl.}
-    Blend*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    BlendMod*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    Blend*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    BlendMod*: proc(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     BlendMap*: proc(self: ptr NAUTILUS_TEXTURE, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.cdecl.}
-    LayerDraw*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerDrawMod*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    LayerDraw*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerDrawMod*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     LayerDrawMap*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.cdecl.}
-    LayerBlend*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    LayerBlendMod*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.cdecl.}
+    LayerBlend*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    LayerBlendMod*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
     LayerBlendMap*: proc(self: ptr NAUTILUS_TEXTURE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.cdecl.}
     # *- Creates a tile | returns a tile or false
     CreateTile*: proc(self: ptr NAUTILUS_TEXTURE, CountX: int, CountY: int, X: int, Y: int, Width: int, Height: int, OffsetX = 0, OffsetY = 0): int {.cdecl.}
@@ -248,17 +248,17 @@ type NAUTILUS_TEXTURE* = ref object
 proc sizeGet*(self: ptr NAUTILUS_TEXTURE, Width: pointer, Height: pointer): int {.inline discardable.} = self.SizeGet(self, Width, Height)
 proc sizeSet*(self: ptr NAUTILUS_TEXTURE, Width: float32, Height: float32): int {.inline discardable.} = self.SizeSet(self, Width, Height)
 proc sizeReset*(self: ptr NAUTILUS_TEXTURE): int {.inline discardable.} = self.SizeReset(self)
-proc draw*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.Draw(self, X, Y, Center, Alpha, Tint, Angle)
-proc drawMod*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawMod(self, X, Y, Width, Height, Center, Alpha, Tint, Angle)
+proc draw*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.Draw(self, X, Y, Center, Alpha, Tint, Angle)
+proc drawMod*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawMod(self, X, Y, Width, Height, Center, Alpha, Tint, Angle)
 proc drawMap*(self: ptr NAUTILUS_TEXTURE, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.inline discardable.} = self.DrawMap(self, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Alpha, Tint)
-proc blend*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.Blend(self, X, Y, Center, Tint, Angle)
-proc blendMod*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.BlendMod(self, X, Y, Width, Height, Center, Tint, Angle)
+proc blend*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.Blend(self, X, Y, Center, Tint, Angle)
+proc blendMod*(self: ptr NAUTILUS_TEXTURE, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.BlendMod(self, X, Y, Width, Height, Center, Tint, Angle)
 proc blendMap*(self: ptr NAUTILUS_TEXTURE, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.inline discardable.} = self.BlendMap(self, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Tint)
-proc layerDraw*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerDraw(self, Layer, X, Y, Center, Alpha, Tint, Angle)
-proc layerDrawMod*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerDrawMod(self, Layer, X, Y, Width, Height, Center, Alpha, Tint, Angle)
+proc layerDraw*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerDraw(self, Layer, X, Y, Center, Alpha, Tint, Angle)
+proc layerDrawMod*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerDrawMod(self, Layer, X, Y, Width, Height, Center, Alpha, Tint, Angle)
 proc layerDrawMap*(self: ptr NAUTILUS_TEXTURE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Alpha = 0xff, Tint = 0xffffff): int {.inline discardable.} = self.LayerDrawMap(self, Layer, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Alpha, Tint)
-proc layerBlend*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlend(self, Layer, X, Y, Center, Tint, Angle)
-proc layerBlendMod*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0, Height = 0, Center = false.int, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.LayerBlendMod(self, Layer, X, Y, Width, Height, Center, Tint, Angle)
+proc layerBlend*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlend(self, Layer, X, Y, Center, Tint, Angle)
+proc layerBlendMod*(self: ptr NAUTILUS_TEXTURE, Layer: int, X: float32, Y: float32, Width = 0.0, Height = 0.0, Center = false.int, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.LayerBlendMod(self, Layer, X, Y, Width, Height, Center, Tint, Angle)
 proc layerBlendMap*(self: ptr NAUTILUS_TEXTURE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, X3: float32, Y3: float32, X4: float32, Y4: float32, Tint = 0xffffff): int {.inline discardable.} = self.LayerBlendMap(self, Layer, X1, Y1, X2, Y2, X3, Y3, X4, Y4, Tint)
 proc createTile*(self: ptr NAUTILUS_TEXTURE, CountX: int, CountY: int, X: int, Y: int, Width: int, Height: int, OffsetX = 0, OffsetY = 0): int {.inline discardable.} = self.CreateTile(self, CountX, CountY, X, Y, Width, Height, OffsetX, OffsetY)
 proc release*(self: ptr NAUTILUS_TEXTURE): int {.inline discardable.} = self.Release(self)
@@ -316,18 +316,18 @@ type NAUTILUS_ENGINE* = ref object
     DrawTextResetSize*: proc(self: ptr NAUTILUS_ENGINE): int {.cdecl.}
     DrawTextSpacingGet*: proc(self: ptr NAUTILUS_ENGINE, Spacing: pointer): int {.cdecl.}
     DrawTextSpacingSet*: proc(self: ptr NAUTILUS_ENGINE, Spacing: float32): int {.cdecl.}
-    DrawText*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    DrawTextMod*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, Width: float32, Height: float32, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.cdecl.}
-    DrawPointSize*: proc(self: ptr NAUTILUS_ENGINE, Size = 1): int {.cdecl.}
-    DrawLineSize*: proc(self: ptr NAUTILUS_ENGINE, Size = 1): int {.cdecl.}
+    DrawText*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    DrawTextMod*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, Width: float32, Height: float32, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.cdecl.}
+    DrawPointSize*: proc(self: ptr NAUTILUS_ENGINE, Size = 1.0): int {.cdecl.}
+    DrawLineSize*: proc(self: ptr NAUTILUS_ENGINE, Size = 1.0): int {.cdecl.}
     DrawPoint*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Color = 0xffffffff): int {.cdecl.}
     DrawLine*: proc(self: ptr NAUTILUS_ENGINE, X1: float32, Y1: float32, X2: float32, Y2: float32, Color = 0xffffffff): int {.cdecl.}
     DrawTriangle*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Fill = false.int, Color = 0xffffffff): int {.cdecl.}
     DrawBox*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Center = false.int, Fill = false.int, Color = 0xffffffff): int {.cdecl.}
     DrawRhombus*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Center = false.int, Fill = false.int, Color = 0xffffffff): int {.cdecl.}
     DrawCircle*: proc(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Radius: float32, Skip = 0, Fill = false.int, Color = 0xffffffff): int {.cdecl.}
-    LayerDrawPointSize*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1): int {.cdecl.}
-    LayerDrawLineSize*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1): int {.cdecl.}
+    LayerDrawPointSize*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1.0): int {.cdecl.}
+    LayerDrawLineSize*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1.0): int {.cdecl.}
     LayerDrawPoint*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, X: float32, Y: float32, Color = 0xffffffff): int {.cdecl.}
     LayerDrawLine*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, Color = 0xffffffff): int {.cdecl.}
     LayerDrawTriangle*: proc(self: ptr NAUTILUS_ENGINE, Layer: int, X: float32, Y: float32, Width: float32, Height: float32, Fill = false.int, Color = 0xffffffff): int {.cdecl.}
@@ -377,18 +377,18 @@ proc drawTextResize*(self: ptr NAUTILUS_ENGINE, Width: float32, Height: float32)
 proc drawTextResetSize*(self: ptr NAUTILUS_ENGINE): int {.inline discardable.} = self.DrawTextResetSize(self)
 proc drawTextSpacingGet*(self: ptr NAUTILUS_ENGINE, Spacing: pointer): int {.inline discardable.} = self.DrawTextSpacingGet(self, Spacing)
 proc drawTextSpacingSet*(self: ptr NAUTILUS_ENGINE, Spacing: float32): int {.inline discardable.} = self.DrawTextSpacingSet(self, Spacing)
-proc drawText*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawText(self, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
-proc drawTextMod*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, Width: float32, Height: float32, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0): int {.inline discardable.} = self.DrawTextMod(self, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
-proc drawPointSize*(self: ptr NAUTILUS_ENGINE, Size = 1): int {.inline discardable.} = self.DrawPointSize(self, Size)
-proc drawLineSize*(self: ptr NAUTILUS_ENGINE, Size = 1): int {.inline discardable.} = self.DrawLineSize(self, Size)
+proc drawText*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawText(self, X, Y, Text, CenterX, CenterY, Alpha, Tint, Angle)
+proc drawTextMod*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Text: WideCString, Width: float32, Height: float32, CenterX = false.int, CenterY = false.int, Alpha = 0xff, Tint = 0xffffff, Angle = 0.0): int {.inline discardable.} = self.DrawTextMod(self, X, Y, Text, Width, Height, CenterX, CenterY, Alpha, Tint, Angle)
+proc drawPointSize*(self: ptr NAUTILUS_ENGINE, Size = 1.0): int {.inline discardable.} = self.DrawPointSize(self, Size)
+proc drawLineSize*(self: ptr NAUTILUS_ENGINE, Size = 1.0): int {.inline discardable.} = self.DrawLineSize(self, Size)
 proc drawPoint*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Color = 0xffffffff): int {.inline discardable.} = self.DrawPoint(self, X, Y, Color)
 proc drawLine*(self: ptr NAUTILUS_ENGINE, X1: float32, Y1: float32, X2: float32, Y2: float32, Color = 0xffffffff): int {.inline discardable.} = self.DrawLine(self, X1, Y1, X2, Y2, Color)
 proc drawTriangle*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Fill = false.int, Color = 0xffffffff): int {.inline discardable.} = self.DrawTriangle(self, X, Y, Width, Height, Fill, Color)
 proc drawBox*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Center = false.int, Fill = false.int, Color = 0xffffffff): int {.inline discardable.} = self.DrawBox(self, X, Y, Width, Height, Center, Fill, Color)
 proc drawRhombus*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Width: float32, Height: float32, Center = false.int, Fill = false.int, Color = 0xffffffff): int {.inline discardable.} = self.DrawRhombus(self, X, Y, Width, Height, Center, Fill, Color)
 proc drawCircle*(self: ptr NAUTILUS_ENGINE, X: float32, Y: float32, Radius: float32, Skip = 0, Fill = false.int, Color = 0xffffffff): int {.inline discardable.} = self.DrawCircle(self, X, Y, Radius, Skip, Fill, Color)
-proc layerDrawPointSize*(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1): int {.inline discardable.} = self.LayerDrawPointSize(self, Layer, Size)
-proc layerDrawLineSize*(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1): int {.inline discardable.} = self.LayerDrawLineSize(self, Layer, Size)
+proc layerDrawPointSize*(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1.0): int {.inline discardable.} = self.LayerDrawPointSize(self, Layer, Size)
+proc layerDrawLineSize*(self: ptr NAUTILUS_ENGINE, Layer: int, Size = 1.0): int {.inline discardable.} = self.LayerDrawLineSize(self, Layer, Size)
 proc layerDrawPoint*(self: ptr NAUTILUS_ENGINE, Layer: int, X: float32, Y: float32, Color = 0xffffffff): int {.inline discardable.} = self.LayerDrawPoint(self, Layer, X, Y, Color)
 proc layerDrawLine*(self: ptr NAUTILUS_ENGINE, Layer: int, X1: float32, Y1: float32, X2: float32, Y2: float32, Color = 0xffffffff): int {.inline discardable.} = self.LayerDrawLine(self, Layer, X1, Y1, X2, Y2, Color)
 proc layerDrawTriangle*(self: ptr NAUTILUS_ENGINE, Layer: int, X: float32, Y: float32, Width: float32, Height: float32, Fill = false.int, Color = 0xffffffff): int {.inline discardable.} = self.LayerDrawTriangle(self, Layer, X, Y, Width, Height, Fill, Color)
